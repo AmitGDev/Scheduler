@@ -2,7 +2,7 @@
 
 **Scheduler v1.0.0**
 
-A Flexible Timer Scheduler for **C++20** Applications **(Header-Only Class)**
+A **Cross-Platform** Flexible Timer Scheduler for **C++20** applications **(Header-Only Class)**
 
 **Author:** Amit Gefen
 
