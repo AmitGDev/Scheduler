@@ -6,7 +6,7 @@
 #include "Scheduler.h"
 
 
-namespace
+namespace // (Anonymous namespace)
 {
 
     void TestGenericCallback()
