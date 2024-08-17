@@ -95,8 +95,7 @@ public:
             timer->async_wait([timer_id, timer, callback, callback_args...](const boost::system::error_code& e) {
                 if (e) {
                     // Handle error
-                    std::osyncstream sync_stream(std::cerr);
-                    sync_stream << "error waiting on timer (id = " << timer_id << "): " << e.message() << std::endl;
+                    std::cerr << "error waiting on timer (id = " << timer_id << "): " << e.message() << std::endl;
                 } else {
                     // Call the callback with the captured arguments
                     callback(timer_id, callback_args...);
