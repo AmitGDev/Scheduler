@@ -106,26 +106,7 @@ public:
         }
     }
 
-    // (2) ScheduleTimer(timer_id, duration, function_pointer, function_args...)
-    //
-    // Schedules a timer with a traditional function pointer as the callback.
-    // - `timer_id`: A unique identifier for the timer.
-    // - `duration`: The duration (in milliseconds) until the timer expires.
-    // - `function_pointer`: A pointer to the function to be invoked when the timer expires.
-    // - `function_args...`: Optional arguments to be passed to the function.
-    //
-    // Adapts the function pointer to a lambda signature using a dummy functor and delegates to the generic `ScheduleTimer` overload.
-    template <typename ReturnType, typename... Args>
-    void ScheduleTimer(const uint64_t timer_id, const uint32_t duration, ReturnType(*function_pointer)(Args...), Args... function_args)
-    {
-        // Create a dummy functor to adapt the function pointer to match the lambda signature
-        std::function<ReturnType(Args...)> callback = function_pointer;
-
-        // Call the original ScheduleTimer with the dummy functor
-        ScheduleTimer(timer_id, duration, callback, std::forward<Args>(function_args)...); // <-- DELEGATE TO (1)
-    }
-
-    // (3) ScheduleTimer(timer_id, duration, member_function, instance, member_function_args...)
+    // (2) ScheduleTimer(timer_id, duration, member_function, instance, member_function_args...)
     //
     // Schedules a timer that invokes a member function of an object.
     // - `timer_id`: A unique identifier for the timer.
