@@ -67,11 +67,7 @@ public:
             std::cerr << "error stopping io_service_: " << e.what() << std::endl;
         }
 
-        try {
-            io_service_thread_.join();
-        } catch (const std::exception& e) {
-            std::cerr << "error joining thread_: " << e.what() << std::endl;
-        }
+        // No need for io_service_thread_.join() as jthread handles that automatically.
     }
 
     // (1) ScheduleTimer(timer_id, duration, callback, callback_args...)
